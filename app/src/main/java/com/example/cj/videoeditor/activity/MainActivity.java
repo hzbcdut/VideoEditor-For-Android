@@ -1,6 +1,8 @@
 package com.example.cj.videoeditor.activity;
 
+import android.Manifest.permission;
 import android.content.Intent;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +26,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         selectBtn.setOnClickListener(this);
         audioBtn.setOnClickListener(this);
         videoBtn.setOnClickListener(this);
+
+        if (VERSION.SDK_INT >= 23) {
+            requestPermissions(new String[]{permission.RECORD_AUDIO, permission.CAMERA, permission.WRITE_EXTERNAL_STORAGE,
+                permission.READ_EXTERNAL_STORAGE}, 1001);
+        }
     }
 
     @Override

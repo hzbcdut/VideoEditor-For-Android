@@ -1,9 +1,13 @@
 package com.example.cj.videoeditor.activity;
 
+import android.Manifest;
+import android.Manifest.permission;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Point;
 import android.hardware.Camera;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
