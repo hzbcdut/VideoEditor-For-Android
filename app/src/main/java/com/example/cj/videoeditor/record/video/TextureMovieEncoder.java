@@ -349,6 +349,7 @@ public class TextureMovieEncoder implements Runnable {
         mVideoEncoder.drainEncoder(false);
         Log.e("hero","---setTextureId=="+mTextureId);
         mShowFilter.setTextureId(mTextureId);
+        // 这里将内容输出到MediaCodec的Surface，注释掉 视频画面是黑色的
         mShowFilter.draw();
         if(baseTimeStamp==-1){
             baseTimeStamp=System.nanoTime();
