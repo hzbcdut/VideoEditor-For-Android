@@ -19,6 +19,7 @@ package com.example.cj.videoeditor.record.video;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.opengl.EGLContext;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -32,6 +33,7 @@ import com.example.cj.videoeditor.gpufilter.basefilter.GPUImageFilter;
 import com.example.cj.videoeditor.gpufilter.basefilter.MagicCameraInputFilter;
 import com.example.cj.videoeditor.record.gles.EglCore;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.nio.FloatBuffer;
@@ -335,6 +337,26 @@ public class TextureMovieEncoder implements Runnable {
                 config.path);
     }
 
+
+    private FilterTest filterTest = new FilterTest();
+
+    /**
+     * 测试   查看从textureId拿到的内容
+     */
+    private void testOutput() {
+
+//        filterTest.generateSurfaceFrame();
+
+        File externalFilesDir = MyApplication.getContext().getExternalFilesDir(Environment.DIRECTORY_DCIM);
+        String fileName = externalFilesDir.getAbsolutePath() + File.separator + "我的" + System.currentTimeMillis() + ".png";
+        try {
+            filterTest.saveFrame(fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     /**
      * Handles notification of an available frame.
      * <p>
@@ -355,6 +377,9 @@ public class TextureMovieEncoder implements Runnable {
             baseTimeStamp=System.nanoTime();
             mVideoEncoder.startRecord();
         }
+
+//        testOutput();
+
         long nano=System.nanoTime();
         long time=nano-baseTimeStamp-pauseDelayTime;
         System.out.println("TimeStampVideo="+time+";nanoTime="+nano+";baseTimeStamp="+baseTimeStamp+";pauseDelay="+pauseDelayTime);
