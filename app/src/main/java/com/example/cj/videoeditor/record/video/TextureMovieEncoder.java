@@ -79,7 +79,7 @@ public class TextureMovieEncoder implements Runnable {
     // ----- accessed exclusively by encoder thread -----
     private WindowSurface mInputWindowSurface;
     private EglCore mEglCore;
-    private MagicCameraInputFilter mInput;
+//    private MagicCameraInputFilter mInput;
     private int mTextureId;
 
     private VideoEncoderCore mVideoEncoder;
@@ -427,7 +427,7 @@ public class TextureMovieEncoder implements Runnable {
 
         // Release the EGLSurface and EGLContext.
         mInputWindowSurface.releaseEglSurface();
-        mInput.destroy();
+//        mInput.destroy();
         mEglCore.release();
 
         // Create a new EGLContext and recreate the window surface.
@@ -436,8 +436,8 @@ public class TextureMovieEncoder implements Runnable {
         mInputWindowSurface.makeCurrent();
 
         // Create new programs and such for the new context.
-        mInput = new MagicCameraInputFilter();
-        mInput.init();
+//        mInput = new MagicCameraInputFilter();
+//        mInput.init();
         filter =null;
         if(filter != null){
             filter.init();
@@ -459,13 +459,13 @@ public class TextureMovieEncoder implements Runnable {
         mInputWindowSurface = new WindowSurface(mEglCore, mVideoEncoder.getInputSurface(), true);
         mInputWindowSurface.makeCurrent();
 
-        mInput = new MagicCameraInputFilter();
-        mInput.init();
+//        mInput = new MagicCameraInputFilter();
+//        mInput.init();
         filter = null;
         if(filter != null){
-            filter.init();
-            filter.onInputSizeChanged(mPreviewWidth, mPreviewHeight);
-            filter.onDisplaySizeChanged(mVideoWidth, mVideoHeight);
+//            filter.init();
+//            filter.onInputSizeChanged(mPreviewWidth, mPreviewHeight);
+//            filter.onDisplaySizeChanged(mVideoWidth, mVideoHeight);
         }
         mShowFilter.create();
         baseTimeStamp=-1;
@@ -477,10 +477,10 @@ public class TextureMovieEncoder implements Runnable {
             mInputWindowSurface.release();
             mInputWindowSurface = null;
         }
-        if (mInput != null) {
-            mInput.destroy();
-            mInput = null;
-        }
+//        if (mInput != null) {
+//            mInput.destroy();
+//            mInput = null;
+//        }
         if (mEglCore != null) {
             mEglCore.release();
             mEglCore = null;
