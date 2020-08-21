@@ -7,6 +7,7 @@ import android.opengl.EGL14;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.example.cj.videoeditor.R;
@@ -119,6 +120,8 @@ public class CameraDrawer implements GLSurfaceView.Renderer {
         mBeautyFilter.init();
         mSlideFilterGroup.init();
 
+
+      Log.d("debug_log"," --> 共享上下文 1 shareEglContext = " + EGL14.eglGetCurrentContext() + "  线程 " + Thread.currentThread());
 
         if (recordingEnabled){
             recordingStatus = RECORDING_RESUMED;

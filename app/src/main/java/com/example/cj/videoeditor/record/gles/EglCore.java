@@ -133,6 +133,8 @@ public final class EglCore {
         EGL14.eglQueryContext(mEGLDisplay, mEGLContext, EGL14.EGL_CONTEXT_CLIENT_VERSION,
                 values, 0);
         Log.d(TAG, "EGLContext created, client version " + values[0]);
+
+        Log.d("debug_log"," --> 共享上下文 2 shareEglContext = " + sharedContext + "  线程 " + Thread.currentThread());
     }
 
     /**
