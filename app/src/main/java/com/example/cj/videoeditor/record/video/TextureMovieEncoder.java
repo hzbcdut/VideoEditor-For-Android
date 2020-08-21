@@ -90,7 +90,7 @@ public class TextureMovieEncoder implements Runnable {
     private Object mReadyFence = new Object();      // guards ready/running
     private boolean mReady;
     private boolean mRunning;
-    private GPUImageFilter filter;
+//    private GPUImageFilter filter;
     private FloatBuffer gLCubeBuffer;
     private FloatBuffer gLTextureBuffer;
     private long baseTimeStamp=-1;//第一帧的时间戳
@@ -438,12 +438,12 @@ public class TextureMovieEncoder implements Runnable {
         // Create new programs and such for the new context.
 //        mInput = new MagicCameraInputFilter();
 //        mInput.init();
-        filter =null;
-        if(filter != null){
-            filter.init();
-            filter.onInputSizeChanged(mPreviewWidth, mPreviewHeight);
-            filter.onDisplaySizeChanged(mVideoWidth, mVideoHeight);
-        }
+//        filter =null;
+//        if(filter != null){
+//            filter.init();
+//            filter.onInputSizeChanged(mPreviewWidth, mPreviewHeight);
+//            filter.onDisplaySizeChanged(mVideoWidth, mVideoHeight);
+//        }
     }
 
     private void prepareEncoder(EGLContext sharedContext, int width, int height, int bitRate,
@@ -461,12 +461,12 @@ public class TextureMovieEncoder implements Runnable {
 
 //        mInput = new MagicCameraInputFilter();
 //        mInput.init();
-        filter = null;
-        if(filter != null){
+//        filter = null;
+//        if(filter != null){
 //            filter.init();
 //            filter.onInputSizeChanged(mPreviewWidth, mPreviewHeight);
 //            filter.onDisplaySizeChanged(mVideoWidth, mVideoHeight);
-        }
+//        }
         mShowFilter.create();
         baseTimeStamp=-1;
     }
@@ -485,11 +485,11 @@ public class TextureMovieEncoder implements Runnable {
             mEglCore.release();
             mEglCore = null;
         }
-        if(filter != null){
-            filter.destroy();
-            filter = null;
+//        if(filter != null){
+//            filter.destroy();
+//            filter = null;
 //            type = MagicFilterType.NONE;
-        }
+//        }
     }
 //    private MagicFilterType type = MagicFilterType.NONE;
     private AFilter mShowFilter=new NoFilter(MyApplication.getContext().getResources());
