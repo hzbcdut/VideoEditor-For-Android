@@ -162,7 +162,10 @@ public class CameraDrawer implements GLSurfaceView.Renderer {
         mSlideFilterGroup.onSizeChanged(mPreviewWidth,mPreviewHeight);
 
         MatrixUtils.getShowMatrix(SM,mPreviewWidth, mPreviewHeight, width, height);
-        showFilter.setMatrix(SM);
+
+        Log.d("debug_log"," mPreviewWidth =  " + mPreviewWidth + " mPreviewHeight = " + mPreviewHeight);
+        Log.d("debug_log"," width =  " + width + " height = " + height);
+//        showFilter.setMatrix(SM);
     }
     /**
      * 切换摄像头的时候
