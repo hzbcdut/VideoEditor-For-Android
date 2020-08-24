@@ -249,6 +249,11 @@ public class RecordedActivity extends BaseActivity implements View.OnClickListen
             }
         }
     };
+
+    /**
+     *  弹出录制完成Toast
+     * @param path
+     */
     private void recordComplete(final String path) {
         runOnUiThread(new Runnable() {
             @Override
